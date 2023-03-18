@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+            integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="/dist/output.css">
+        <title>JoyChat - Accueil</title>
+    </head>
+    <body class="font-poppins box-border">
+        <div class="flex items-center justify-center min-h-screen z-20">
+            <div class="text-center max-w-lg mx-2 border border-gray-200 p-4
+                rounded-lg">
+                <h1 class="text-2xl font-medium text-gray-900">Bienvenue sur
+                    <span class="text-rose-500">JoyChat!</span></h1>
+                <p class="pb-2 pt-4 text-gray-800 text-sm">
+                    Bonjour c'est <span class="font-medium">dewunis!</span> je suis entrain de
+                    contruire une
+                    application de messagerie dans le simple but
+                    d'appprendre n'hésiter pas a me proposer des améliorations!
+                </p>
+                <p class="py-3 text-gray-700 text-sm">
+                    Tout le code source sera disponible sur git,je mettrai régulièrement a jour le code source.
+                    <a href="https://github.com/dewunis/joy-chat-app"
+                        class="text-rose-500 underline">JoyChat code source </a>
+                </p>
+                <button id="main-signup" class="text-white font-medium py-2 px-4
+                    bg-rose-500
+                    rounded-lg hover:bg-rose-600 transition-opacity">S'inscrire</button>
+            </div>
+        </div>
+
+        <div id="modal" class="absolute w-screen h-screen left-0 top-0 bg-black
+            bg-opacity-50 items-center justify-center min-h-screen hidden">
+            <form id="signup" action="" class="max-w-xs p-4 w-full bg-white
+                border
+                border-gray-50 rounded-lg relative">
+                <div class="absolute cursor-pointer bg-gray-100 right-2 top-2
+                    flex items-center justify-center rounded-full w-8 h-8
+                    __close">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <h1 class="text-2xl font-medium text-gray-800 py-3 text-center
+                    border-b border-b-gray-200">S'inscrire</h1>
+                <div class="mt-4">
+                    <label for="" class="text-gray-800 text-sm">Nom
+                        d'utilisateur :</label>
+
+                    <div class="h-9 w-full border border-gray-300 rounded-lg
+                        overflow-hidden my-2">
+                        <input placeholder="Nom d'utilisateur " type="text"
+                            name="username" id="username" class="text-sm w-full
+                            h-full px-2 outline-none" required>
+                    </div>
+
+                    <label for="" class="text-gray-800 text-sm">Mot de passe :</label>
+                    <div class="h-9 w-full border border-gray-300 rounded-lg
+                        overflow-hidden my-2">
+                        <input placeholder="Mot de passe" type="password"
+                            name="password1" id="password1" class="text-sm
+                            w-full
+                            h-full px-2 outline-none" required>
+                    </div>
+
+                    <label for="" class="text-gray-800 text-sm">Confirmer le mot
+                        passe :</label>
+
+                    <div class="h-9 w-full border border-gray-300 rounded-lg
+                        overflow-hidden my-2">
+                        <input placeholder="Confirmer le mot passe"
+                            type="password"
+                            name="password2" id="password2" class="text-sm
+                            w-full
+                            h-full px-2 outline-none" required>
+                    </div>
+
+                    <label for="" class="text-gray-800 text-sm">Choisir une
+                        image :</label>
+
+                    <div class="mt-2 flex justify-between items-center w-full">
+                        <div id="file-btn" class="relative text-gray-600 text-2xl cursor-pointer flex
+                            items-center justify-center w-20 h-20 bg-gray-100
+                            border border-gray-200 rounded-lg overflow-hidden">
+                            <i class="fa-solid fa-plus"></i>
+                            <img id="output" src="#" alt="image" class="w-fuul h-full object-cover hidden">
+                            <input type="file" name="file" id="file" hidden>
+                        </div>
+                        <div>
+                            <span class="text-xs">Type d'image (png,jpg,jpeg)</span>
+                        </div>
+                    </div>
+                    <span id="error-image-span" class="text-red-500 text-xs hidden">Veuillez choisir une image</span>
+
+                    <div id="signup-btn" class="w-full mt-4">
+                        <button class="text-white font-medium py-2 px-4
+                            bg-rose-500
+                            rounded-lg hover:bg-rose-600 transition-opacity
+                            w-full">S'inscrire</button>
+                    </div>
+                    <div class="mt-4 flex items-center justify-center"><span
+                            class="text-rose-500 __switch text-center
+                            cursor-pointer underline text-sm"
+                            id="signup-switch">Ou se connecter</span></div>
+                </div>
+            </form>
+
+            <form id="login" action="" class="relative hidden max-w-xs p-4 w-full bg-white
+                border
+                border-gray-50 rounded-lg">
+                <div class="absolute cursor-pointer bg-gray-100 right-2 top-2
+                    flex items-center justify-center rounded-full w-8 h-8
+                    __close">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="mt-4">
+                    <h1 class="text-2xl font-medium text-gray-800 pb-3 mb-3
+                        text-center border-b border-b-gray-200">Se connecter</h1>
+
+                    <label for="" class="text-gray-800 text-sm">Nom
+                        d'utilisateur :</label>
+
+                    <div class="h-9 w-full border border-gray-300 rounded-lg
+                        overflow-hidden my-2">
+                        <input placeholder="Nom d'utilisateur " type="text"
+                            name="username" id="login-username" class="text-sm
+                            w-full
+                            h-full px-2 outline-none" required>
+                    </div>
+
+                    <label for="" class="text-gray-800 text-sm">Mot de passe :</label>
+                    <div class="h-9 w-full border border-gray-300 rounded-lg
+                        overflow-hidden my-2">
+                        <input placeholder="Mot de passe" type="password"
+                            name="password" id="login-password" class="text-sm
+                            w-full
+                            h-full px-2 outline-none" required>
+                    </div>
+
+                    <div class="w-full mt-4">
+                        <button class="text-white font-medium py-2 px-4
+                            bg-rose-500
+                            rounded-lg hover:bg-rose-600 transition-opacity
+                            w-full">Connexion</button>
+                    </div>
+
+                    <div class="mt-4 flex items-center justify-center"><span
+                            class="text-rose-500 __switch text-center
+                            cursor-pointer underline text-sm" id="login-switch">Ou
+                            S'inscrire</span></div>
+                </div>
+            </form>
+
+        </div>
+        <script src="/js/main.js"></script>
+    </body>
+</html>
