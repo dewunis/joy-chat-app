@@ -10,31 +10,106 @@
             crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="/dist/output.css">
         <title>JoyChat - Accueil</title>
+        <style>
+            #showcase{
+                height: 400px;
+            }
+            #showcase::after,#showcase::before{
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -100px;
+                right: 0;
+                height: 100px;
+                width: 100%;
+                background-color: white;
+                z-index: 0;
+                transform: skewY(-5deg);
+            }
+        </style>
     </head>
     <body class="font-poppins box-border">
-        <div class="flex items-center justify-center min-h-screen z-20">
-            <div class="text-center max-w-lg mx-2 border border-gray-200 p-4
-                rounded-lg">
-                <h1 class="text-2xl font-medium text-gray-900">Bienvenue sur
-                    <span class="text-rose-500">JoyChat!</span></h1>
-                <p class="pb-2 pt-4 text-gray-800 text-sm">
-                    Bonjour c'est <span class="font-medium">dewunis!</span> je suis entrain de
-                    contruire une
-                    application de messagerie dans le simple but
-                    d'appprendre n'hésiter pas a me proposer des améliorations!
-                </p>
-                <p class="py-3 text-gray-700 text-sm">
-                    Tout le code source sera disponible sur git,je mettrai régulièrement a jour le code source.
-                    <a href="https://github.com/dewunis/joy-chat-app"
-                        class="text-rose-500 underline">JoyChat code source </a>
-                </p>
-                <button id="main-signup" class="text-white font-medium py-2 px-4
-                    bg-rose-500
-                    rounded-lg hover:bg-rose-600 transition-opacity">S'inscrire</button>
-            </div>
-        </div>
 
-        <div id="modal" class="absolute w-screen h-screen left-0 top-0 bg-black
+        <main>
+            <section class="bg-rose-500 pt-12 pb-20 relative" id="showcase">
+                <div class="container flex items-center justify-center
+                    flex-wrap ">
+
+                    <div class="max-w-lg w-full mr-6 text-center">
+                        <h1 class="text-3xl font-medium text-white">Envoyez des
+                            messages a vos proches!</h1>
+                        <p class="pb-2 pt-4 text-white text-sm">
+                            Bonjour c'est <span class="font-medium">dewunis!</span>
+                            je suis entrain de
+                            contruire une
+                            application de messagerie dans le simple but
+                            d'appprendre n'hésiter pas a me proposer des
+                            améliorations et faite vous plaisir!
+                        </p>
+                        <div class="mt-4">
+                            <button id="main-signup" class="text-rose-500
+                                font-medium py-2 px-4
+                                bg-white
+                                rounded-lg border hover:text-white
+                                hover:border-white hover:bg-rose-500
+                                transition-opacity">S'inscrire</button>
+                        </div>
+                    </div>
+                    <div class="relative top-24 bottom-10 shadow-xl rounded-xl
+                        bg-white
+                        max-w-sm w-full z-10">
+                        <form action="" class="px-4 py-2">
+                            <h1 class="text-2xl text-gray-800 font-medium
+                                text-center py-4
+                                border-b border-b-gray-100">Suggestion</h1>
+                            <div class="pt-2">
+                                <div>
+                                    <label for="" class="text-gray-800 text-sm">Nom
+                                        d'utilisateur :</label>
+                                    <div class="my-2 h-10 border border-gray-200
+                                        w-full rounded-lg overflow-hidden">
+                                        <input type="text" name="name"
+                                            class="text-xs w-full h-full px-2
+                                            outline-none" id="name"
+                                            placeholder="Nom d'utilisateur">
+                                    </div>
+                                </div>
+
+                                <label for="" class="text-gray-800 text-sm">Votre
+                                    message :</label>
+                                <div class="my-2 h-20 border border-gray-200
+                                    w-full
+                                    rounded-lg overflow-hidden">
+                                    <textarea placeholder="Votre Message"
+                                        class="text-xs w-full h-full resize-none
+                                        outline-none px-2 py-2"
+                                        name="suggestion-message" id=""></textarea>
+                                </div>
+
+                                <div class="flex items-center mt-4">
+                                    <input type="radio" name="dev">
+                                    <label class="ml-3 text-sm text-gray-800">Je
+                                        suis développeur</label>
+                                </div>
+
+                                <div class="my-4">
+                                    <button class="text-white font-medium py-2
+                                        px-4
+                                        w-1/2
+                                        bg-rose-500
+                                        rounded-lg hover:bg-rose-600
+                                        transition-opacity">Envoyer</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div id="modal" class="fixed w-screen h-screen left-0 top-0 z-50
+            bg-black
             bg-opacity-50 items-center justify-center min-h-screen hidden">
             <form id="signup" action="" class="max-w-xs p-4 w-full bg-white
                 border
@@ -50,18 +125,18 @@
                     <label for="" class="text-gray-800 text-sm">Nom
                         d'utilisateur :</label>
 
-                    <div class="h-9 w-full border border-gray-300 rounded-lg
+                    <div class="h-10 w-full border border-gray-300 rounded-lg
                         overflow-hidden my-2">
                         <input placeholder="Nom d'utilisateur " type="text"
-                            name="username" id="username" class="text-sm w-full
+                            name="username" id="username" class="text-xs w-full
                             h-full px-2 outline-none" required>
                     </div>
 
                     <label for="" class="text-gray-800 text-sm">Mot de passe :</label>
-                    <div class="h-9 w-full border border-gray-300 rounded-lg
+                    <div class="h-10 w-full border border-gray-300 rounded-lg
                         overflow-hidden my-2">
                         <input placeholder="Mot de passe" type="password"
-                            name="password1" id="password1" class="text-sm
+                            name="password1" id="password1" class="text-xs
                             w-full
                             h-full px-2 outline-none" required>
                     </div>
@@ -69,11 +144,11 @@
                     <label for="" class="text-gray-800 text-sm">Confirmer le mot
                         passe :</label>
 
-                    <div class="h-9 w-full border border-gray-300 rounded-lg
+                    <div class="h-10 w-full border border-gray-300 rounded-lg
                         overflow-hidden my-2">
                         <input placeholder="Confirmer le mot passe"
                             type="password"
-                            name="password2" id="password2" class="text-sm
+                            name="password2" id="password2" class="text-xs
                             w-full
                             h-full px-2 outline-none" required>
                     </div>
@@ -82,18 +157,21 @@
                         image :</label>
 
                     <div class="mt-2 flex justify-between items-center w-full">
-                        <div id="file-btn" class="relative text-gray-600 text-2xl cursor-pointer flex
+                        <div id="file-btn" class="relative text-gray-600
+                            text-2xl cursor-pointer flex
                             items-center justify-center w-20 h-20 bg-gray-100
                             border border-gray-200 rounded-lg overflow-hidden">
                             <i class="fa-solid fa-plus"></i>
-                            <img id="output" src="#" alt="image" class="w-fuul h-full object-cover hidden">
+                            <img id="output" src="#" alt="image" class="w-fuul
+                                h-full object-cover hidden">
                             <input type="file" name="file" id="file" hidden>
                         </div>
                         <div>
                             <span class="text-xs">Type d'image (png,jpg,jpeg)</span>
                         </div>
                     </div>
-                    <span id="error-image-span" class="text-red-500 text-xs hidden">Veuillez choisir une image</span>
+                    <span id="error-image-span" class="text-red-500 text-xs
+                        hidden">Veuillez choisir une image</span>
 
                     <div id="signup-btn" class="w-full mt-4">
                         <button class="text-white font-medium py-2 px-4
@@ -108,7 +186,8 @@
                 </div>
             </form>
 
-            <form id="login" action="" class="relative hidden max-w-xs p-4 w-full bg-white
+            <form id="login" action="" class="relative hidden max-w-xs p-4
+                w-full bg-white
                 border
                 border-gray-50 rounded-lg">
                 <div class="absolute cursor-pointer bg-gray-100 right-2 top-2
@@ -119,23 +198,22 @@
                 <div class="mt-4">
                     <h1 class="text-2xl font-medium text-gray-800 pb-3 mb-3
                         text-center border-b border-b-gray-200">Se connecter</h1>
-
                     <label for="" class="text-gray-800 text-sm">Nom
                         d'utilisateur :</label>
 
-                    <div class="h-9 w-full border border-gray-300 rounded-lg
+                    <div class="h-10 w-full border border-gray-300 rounded-lg
                         overflow-hidden my-2">
                         <input placeholder="Nom d'utilisateur " type="text"
-                            name="username" id="login-username" class="text-sm
+                            name="username" id="login-username" class="text-xs
                             w-full
                             h-full px-2 outline-none" required>
                     </div>
 
                     <label for="" class="text-gray-800 text-sm">Mot de passe :</label>
-                    <div class="h-9 w-full border border-gray-300 rounded-lg
+                    <div class="h-10 w-full border border-gray-300 rounded-lg
                         overflow-hidden my-2">
                         <input placeholder="Mot de passe" type="password"
-                            name="password" id="login-password" class="text-sm
+                            name="password" id="login-password" class="text-xs
                             w-full
                             h-full px-2 outline-none" required>
                     </div>

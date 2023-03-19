@@ -19,6 +19,8 @@ mainSignupBtn.addEventListener('click' , ()=>{
 closeBtn.forEach((btn)=>{
     btn.addEventListener('click', ()=>{
         modal.classList.add('hidden')
+        loginForm.classList.add('hidden')
+        signupForm.classList.remove('hidden')
     })
 })
 
