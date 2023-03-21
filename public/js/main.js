@@ -1,8 +1,10 @@
 const modal = document.querySelector('#modal')
 const signupForm = document.querySelector('#signup')
 const loginForm = document.querySelector('#login')
+const suggestionForm = document.querySelector('#suggestion')
 const loginBtn = document.querySelector('#login-btn')
 const signupBtn = document.querySelector('#signup-btn')
+const suggestionBtn = document.querySelector('#suggestion-btn')
 const mainSignupBtn = document.querySelector('#main-signup')
 const closeBtn = document.querySelectorAll('.__close')
 const switchBtn = document.querySelectorAll('.__switch')
@@ -38,6 +40,8 @@ switchBtn.forEach((btn)=>{
 
 fileBtn.addEventListener('click',()=>{
     fileInput.click()
+    const output = document.querySelector('#output')
+
     fileInput.onchange = (e)=>{
         valideType = [
             'image/jpeg',
@@ -48,10 +52,10 @@ fileBtn.addEventListener('click',()=>{
         if(!valideType.includes(imageType)){
             erroImage.textContent = "Format de l'image non valide"
             erroImage.classList.remove('hidden')
+            output.classList.add('hidden')
             return
         }
 
-        const output = document.querySelector('#output')
         output.classList.add('absolute')
         output.src = URL.createObjectURL(e.target.files[0]);
 
@@ -65,22 +69,105 @@ fileBtn.addEventListener('click',()=>{
     }
 })
 
+
+suggestionForm.onsubmit = (e)=>{
+    e.preventDefault()
+}
+
+suggestionBtn.addEventListener('click',()=>{
+     
+    let xhr = new XMLHttpRequest()
+    xhr.open('POST','/suggestion.php',true)
+
+    xhr.onload = ()=>{
+        if(xhr.readyState == XMLHttpRequest.DONE){
+            if(xhr.status == 200){
+
+                let data = xhr.response
+                let suggestionError = document.querySelector('#suggestion-error')
+                console.log(data);
+                if(data == 'Okay'){ 
+                   
+                }else{
+                    suggestionError.classList.remove('hidden')
+                    suggestionError.textContent = data
+                }
+            }
+        }
+    }
+
+    let form = new FormData(suggestionForm)
+    xhr.send(form)
+})
+
+// Signup and Login js
+
 signupForm.onsubmit = (e)=>{
     e.preventDefault()
 }
 
-signupBtn.addEventListener('click',(e)=>{
-    if(fileBtn.querySelector('img').src = '#'){
-        erroImage.classList.remove('hidden')
-        return
-    }
+loginForm.onsubmit = (e)=>{
+    e.preventDefault()
+}
 
+signupBtn.addEventListener('click',(e)=>{
+    
     let xhr = new XMLHttpRequest()
     xhr.open('POST','/signup.php',true)
-    xhr.onload = ()=>{
 
+    xhr.onload = ()=>{
+        if(xhr.readyState == XMLHttpRequest.DONE){
+            if(xhr.status == 200){
+
+                let data = xhr.response
+                let signupError = document.querySelector('#signup-error')
+
+                if(data == 'Okay'){ 
+                    signupError.classList.remove('hidden')
+                    signupError.classList.replace('text-red-500','text-green-500')
+                    signupError.textContent = 'Inscription réussie,redirection vers la page de connexion.'
+                    
+                    setTimeout(() => {
+                        signupForm.classList.add('hidden')
+                        loginForm.classList.remove('hidden')
+                    }, 2000);
+
+                }else{
+                    signupError.classList.remove('hidden')
+                    signupError.textContent = data
+                }
+            }
+        }
     }
-    xhr.send()
+
+    let form = new FormData(signupForm)
+    xhr.send(form)
+})
+
+loginBtn.addEventListener('click',(e)=>{
+    
+    let xhr = new XMLHttpRequest()
+    xhr.open('POST','/login.php',true)
+
+    xhr.onload = ()=>{
+        if(xhr.readyState == XMLHttpRequest.DONE){
+            if(xhr.status == 200){
+
+                let data = xhr.response
+                let loginError = document.querySelector('#login-error')
+                console.log(data == 'Okay');
+                if(data == 'Okay'){ 
+                   location.href = '/users.php'
+                }else{
+                    loginError.classList.remove('hidden')
+                    loginError.textContent = data
+                }
+            }
+        }
+    }
+
+    let form = new FormData(loginForm)
+    xhr.send(form)
 })
 
 
